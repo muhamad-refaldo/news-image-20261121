@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
-"""Entrypoint for the news-image-20261121 entry.
+"""Entrypoint: copy the pre-built entry image to the output directory.
 
-Copies the pre-built entry.png from this repository to the output
-directory. Standard library only, no network, deterministic: every run
-writes the same bytes. The image itself is drawn by generate.py.
+The entry image is drawn by generate.py and shipped in this repository as
+entry.png. This program only copies it to $MAKEFUN_OUTPUT_DIR/entry.png
+(default /output/entry.png). Standard library only, deterministic, no
+network access. It runs twice; both runs must write identical bytes.
 """
 import os
 import shutil
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+
 
 def main():
-    here = os.path.dirname(os.path.abspath(__file__))
-    out = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-    os.makedirs(out, exist_ok=True)
-    shutil.copyfile(os.path.join(here, "entry.png"),
-                    os.path.join(out, "entry.png"))
+    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+    os.makedirs(out_dir, exist_ok=True)
+    src = os.path.join(HERE, "entry.png")
+    dst = os.path.join(out_dir, "entry.png")
+    shutil.copyfile(src, dst)
 
 
 if __name__ == "__main__":

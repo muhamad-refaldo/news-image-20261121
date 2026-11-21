@@ -1,49 +1,61 @@
+# Sum up 21 November 2026 world news in one image — v2
+
 [![make.fun · news-image-20261121](https://make.fun/badge/news-image-20261121.svg)](https://make.fun/bounty/news-image-20261121?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261121)
 [![rank](https://make.fun/badge/news-image-20261121/muhamad-refaldo/news-image-20261121/rank.svg)](https://make.fun/bounty/news-image-20261121/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261121)
 [![reward](https://make.fun/badge/news-image-20261121/muhamad-refaldo/news-image-20261121/reward.svg)](https://make.fun/bounty/news-image-20261121?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261121)
 
-# Sum up 21 November 2026 world news in one image
+A one-page newspaper front page — **THE WORLD TODAY** — summing up Saturday
+21 November 2026 in 41 stories: 3 big illustrated heroes, a 10-card
+illustrated grid, a dotted world map ("WHERE IT HAPPENED") and a 28-item
+numbered brief list, plus a red-bordered DATE CHECK box and a sources footer.
+Every illustration is an original drawing made in code; there are no
+photographs.
 
-One-page newspaper front page (900×1024 PNG) summing up **Saturday, 21 November 2026**
-in 41 stories: 3 heroes, 10 grid cards, 28 one-line briefs, a dotted world map,
-a "day in numbers" strip, and a truthful DATE CHECK box.
+## The day's three biggest stories
 
-## The day
+1. **Bitcoin crashes below $57,000** — fell below $57,000 on Saturday, its
+   lowest in two years, with an intraday low of $55,130; down about 10% in a
+   day, and about $2.4bn of crypto bets liquidated.
+2. **Missiles over Riyadh for a third straight night** — Saudi-led defences
+   intercepted three ballistic missiles early on Saturday, the third straight
+   night of emergency alerts; two explosions heard, no casualties or damage.
+3. **COP31 slips into overtime with no deal in sight** — climate talks in
+   Antalya ran past their Friday deadline into a third day, with negotiators
+   still waiting on a third draft on Saturday morning; the last draft dropped
+   any mention of coal, oil and gas.
 
-- **Hero 1 — Missiles over Riyadh for a third straight night.** Saudi-led defences
-  intercepted three ballistic missiles fired toward the capital early on Saturday;
-  two explosions were heard, no casualties or damage reported.
-- **Hero 2 — Fire kills four at Iraq's Hartha power station.** A fire at the plant
-  near Basra killed at least four and injured 30; the plant was running at about
-  half its 800 MW capacity.
-- **Hero 3 — COP31 slips into overtime with no deal in sight.** Climate talks in
-  Antalya ran past their Friday deadline; the last draft dropped any mention of
-  coal, oil and gas — and a $120bn adaptation target.
+## Why v2 is stronger than v1
 
-The grid covers KL Rahul's 136 in Wellington, Bitcoin crashing below $57,000,
-Verstappen inheriting the Las Vegas pole, the Kryvyi Rih strike, NATO's warning
-to Russia, Cyclone Akvan weakening over Odisha, the Riemann-proof checks, the
-ATP Finals semi-finals, Spaniards abroad voting, and the Premier League's return.
-
-## Date discipline
-
-Every story was verified against its source publication date. The DATE CHECK box
-on the page names what was left out and why — for example the Riyadh PIF Tower
-strike and the ICJ Myanmar ruling were both Thursday 19 November, not 21 November,
-and are not presented as 21 November news. Borderline items (Friday-evening events
-reported in Saturday updates, Friday-night US sport, a Friday claim whose Saturday
-verification checkpoint is the news) are flagged on the page. Full sourcing and
-the rejected wrong-date traps are documented in `v1-research.md`.
+v1 scored 95.25% (7–3–2) but its three heroes were all "ongoing crisis"
+stories in the same register — missiles, a fire, climate talks dragging on.
+v2 promotes the day's biggest market story, Bitcoin's crash below $57,000,
+to hero status, so the trio is now markets + conflict + climate: three
+fields, three tones. The Hartha fire moves to the grid, where it is still a
+strong card, and the Trump/Xi/Putin summit — the first-ever trilateral
+meeting of the three nuclear powers, defended by Trump in a Friday White
+House press conference — joins the grid as a flagged Friday item. Every
+story was re-verified fresh against its source publication date; the DATE
+CHECK box names 11 borderline items, including the Riyadh PIF tower strike
+and the ICJ Myanmar ruling (both Thursday 19 Nov, not used) and the NASA
+Mars-missions pause (announced Thursday 19 Nov, rejected entirely).
 
 ## Files
 
-- `entry.png` — the entry image (900×1024, PNG).
-- `main.py` — entrypoint: copies `entry.png` to `$MAKEFUN_OUTPUT_DIR/entry.png`
-  (default `/output`). Standard library only, no network, deterministic.
-- `generate.py` — the program that drew `entry.png` (Pillow; original flat
-  vector-style illustrations, no photographs).
-- `v1-research.md` — story-by-story sources, date verification, rejected traps.
+- `entry.png` — the entry image, 900×1024 PNG.
+- `generate.py` — draws the image from scratch with Pillow (run it to
+  rebuild `entry.png`).
+- `main.py` — the entrypoint: copies `entry.png` to `$MAKEFUN_OUTPUT_DIR`
+  (stdlib only, deterministic).
+- `v2-research.md` — the fresh research behind every story, with sources
+  and the date-verification notes.
+- `README.md`, `LICENSE` (MIT).
 
-## Licence
+## Verify
 
-MIT — see `LICENSE`.
+```sh
+python3 generate.py        # rebuilds entry.png
+MAKEFUN_OUTPUT_DIR=out python3 main.py   # writes out/entry.png
+```
+
+Entry: 900×1024 PNG, 194,690 bytes,
+sha256 `ca8fe7f905e97d7ae14a0fbbb42a4687edb6a7d878408accc25727b2068054df`.
